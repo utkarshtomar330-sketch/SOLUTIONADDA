@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SolutionAdda | Programming Solutions</title>
+
+    <meta name="description"
+          content="SolutionAdda - Learn programming, explore coding solutions, and improve your development skills.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            width: 100%;
+            background: #0f172a;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 27px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .login-btn {
+            border: 1px solid #38bdf8;
+            padding: 9px 18px;
+            border-radius: 7px;
+        }
+
+        .register-btn {
+            background: #2563eb;
+            color: white !important;
+            padding: 10px 18px;
+            border-radius: 7px;
+        }
+
+        .register-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            padding: 70px 7%;
+            background: linear-gradient(135deg, #0f172a, #172554);
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.12);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 8px 15px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            color: #cbd5e1;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .secondary-btn {
+            color: white;
+            border: 1px solid #64748b;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .secondary-btn:hover {
+            border-color: #38bdf8;
+            color: #38bdf8;
+        }
+
+        /* ================= CODE BOX ================= */
+
+        .hero-code {
+            margin-left: auto;
+            width: 430px;
+            background: #020617;
+            border: 1px solid #334155;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .dots {
+            display: flex;
+            gap: 7px;
+            margin-bottom: 20px;
+        }
+
+        .dots span {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #64748b;
+        }
+
+        .hero-code pre {
+            color: #cbd5e1;
+            line-height: 1.7;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+        }
+
+        .keyword {
+            color: #c084fc;
+        }
+
+        .function {
+            color: #38bdf8;
+        }
+
+        .string {
+            color: #86efac;
+        }
+
+        /* ================= SECTION ================= */
+
+        .section {
+            padding: 80px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #64748b;
+            font-size: 16px;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(15, 23, 42, 0.1);
+        }
+
+        .feature-icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eff6ff;
+            border-radius: 12px;
+            font-size: 27px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* ================= SOLUTIONS ================= */
+
+        .solutions-section {
+            background: #f1f5f9;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .solution-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .solution-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .solution-card p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .solution-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            margin: 70px 7%;
+            padding: 65px 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #2563eb, #1e3a8a);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #dbeafe;
+            margin-bottom: 25px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: #1d4ed8;
+            padding: 13px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 40px 7% 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand p {
+            max-width: 400px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #38bdf8;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #334155;
+            margin-top: 30px;
+            padding-top: 20px;
+            font-size: 14px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-code {
+                margin: 45px auto 0;
+                width: 100%;
+                max-width: 500px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .features,
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+   <a href="index.html" class="logo">
+    <img src="logo.png" alt="SolutionAdda Logo" height="70px" width="80px">
+    <span>SolutionAdda</span>
+</a>
+
+    <nav class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="#features">Features</a>
+
+        <a href="solutions.php">Solutions</a>
+
+        <a href="#about">About</a>
+
+        <a href="login.php" class="login-btn">Login</a>
+
+        <a href="register.php" class="register-btn">Register</a>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🚀 Learn • Code • Build
+        </div>
+
+        <h1>
+            Find the right
+            <span>solution</span>
+            for your code.
+        </h1>
+
+        <p>
+            Welcome to SolutionAdda — a simple platform for
+            exploring programming solutions, learning coding concepts,
+            and improving your development skills.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="solutions.php" class="primary-btn">
+                Explore Solutions →
+            </a>
+
+            <a href="register.php" class="secondary-btn">
+                Get Started
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Code Preview -->
+
+    <div class="hero-code">
+
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+<pre><span class="keyword">function</span> <span class="function">findSolution</span>(problem) {
+
+    <span class="keyword">if</span> (problem) {
+
+        <span class="keyword">return</span>
+        <span class="string">"Solution Found 🚀"</span>;
+
+    }
+
+    <span class="keyword">return</span>
+    <span class="string">"Keep Learning"</span>;
+}</pre>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="section" id="features">
+
+    <div class="section-title">
+
+        <h2>Why Choose SolutionAdda?</h2>
+
+        <p>
+            Everything you need to learn, explore and practice programming.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                💻
+            </div>
+
+            <h3>Programming Solutions</h3>
+
+            <p>
+                Explore useful programming solutions with
+                descriptions and source code.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📚
+            </div>
+
+            <h3>Learn & Practice</h3>
+
+            <p>
+                Understand programming concepts and practice
+                your skills through real examples.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🚀
+            </div>
+
+            <h3>Build Your Skills</h3>
+
+            <p>
+                Improve your coding knowledge and become a
+                better developer step by step.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SOLUTIONS ================= -->
+
+<section class="section solutions-section">
+
+    <div class="section-title">
+
+        <h2>Explore Programming</h2>
+
+        <p>
+            Discover solutions across popular programming technologies.
+        </p>
+
+    </div>
+
+
+    <div class="solution-grid">
+
+        <div class="solution-card">
+
+            <h3>🐍 Python</h3>
+
+            <p>
+                Explore Python programs, examples and
+                beginner-friendly solutions.
+            </p>
+
+            <a href="solutions.php" class="solution-link">
+                Explore Python →
+            </a>
+
+        </div>
+
+
+        <div class="solution-card">
+
+            <h3>🌐 HTML & CSS</h3>
+
+            <p>
+                Learn website structure, styling and
+                frontend development solutions.
+            </p>
+
+            <a href="solutions.php" class="solution-link">
+                Explore Web Development →
+            </a>
+
+        </div>
+
+
+        <div class="solution-card">
+
+            <h3>☕ Java</h3>
+
+            <p>
+                Find Java programming examples and
+                coding solutions.
+            </p>
+
+            <a href="solutions.php" class="solution-link">
+                Explore Java →
+            </a>
+
+        </div>
+
+
+        <div class="solution-card">
+
+            <h3>🐘 PHP</h3>
+
+            <p>
+                Explore PHP examples for dynamic websites
+                and backend development.
+            </p>
+
+            <a href="solutions.php" class="solution-link">
+                Explore PHP →
+            </a>
+
+        </div>
+
+
+        <div class="solution-card">
+
+            <h3>🗄️ MySQL</h3>
+
+            <p>
+                Learn database queries, tables and
+                SQL programming examples.
+            </p>
+
+            <a href="solutions.php" class="solution-link">
+                Explore MySQL →
+            </a>
+
+        </div>
+
+
+        <div class="solution-card">
+
+            <h3>💡 More Solutions</h3>
+
+            <p>
+                Discover more programming solutions
+                available on SolutionAdda.
+            </p>
+
+            <a href="solutions.php" class="solution-link">
+                View All Solutions →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="section" id="about">
+
+    <div class="section-title">
+
+        <h2>About SolutionAdda</h2>
+
+        <p>
+            A learning-focused platform created for programmers and students.
+        </p>
+
+    </div>
+
+    <div style="
+        max-width: 850px;
+        margin: auto;
+        text-align: center;
+        color: #64748b;
+        line-height: 1.8;
+        font-size: 17px;
+    ">
+
+        <p>
+            SolutionAdda is designed to make programming solutions
+            easier to discover and understand. Whether you are a
+            beginner learning your first programming language or a
+            student working on a project, SolutionAdda provides a
+            simple place to explore useful coding examples.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+    <h2>Ready to Start Coding?</h2>
+
+    <p>
+        Join SolutionAdda and start exploring programming solutions today.
+    </p>
+
+    <a href="register.php" class="cta-btn">
+        Create Your Account
+    </a>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+
+            <h2>SolutionAdda</h2>
+
+            <p>
+                Learn programming. Explore solutions.
+                Build your skills.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="solutions.php">Solutions</a>
+
+            <a href="login.php">Login</a>
+
+            <a href="register.php">Register</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 SolutionAdda. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+</body>
+</html>
